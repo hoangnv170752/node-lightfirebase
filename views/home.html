@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node light firebase</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body style="background: #4c4d4e;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background: linear-gradient(#3d4144, #cdcf45);">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">
+              <div class="container text-center" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+            <img src="https://i.ibb.co/Wfsm0bK/Pngtree-light-bulb-vector-glowing-bright-5138824.png" alt="logo" style="height: 30px; width: 30px;">Firebase Lightingserver</div>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link " href="/">Home</a>
+              </li>
+          </div>
+        </div>
+      </nav>
+    <div class="container align-items-center mt-5 " style="display: grid; align-items: center;">
+        <div class="row text-center" style="color: white;">
+            <div class="col-md ">
+                <img class="card-img-top" src="https://i.ibb.co/Wfsm0bK/Pngtree-light-bulb-vector-glowing-bright-5138824.png" alt="lightbulb" >
+                Light <span class ="badge rounded-pill bg-warning text-dark" id="lighta"></span>
+            </div>
+            <div class="col-md">
+                <img class="card-img-top" src="https://i.ibb.co/Wfsm0bK/Pngtree-light-bulb-vector-glowing-bright-5138824.png" alt="lightbulb" >
+                Light <span class="badge rounded-pill bg-warning text-dark " id="lightb"></span>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.js" integrity="sha512-MNW6IbpNuZZ2VH9ngFhzh6cUt8L/0rSVa60F8L22K1H72ro4Ki3M/816eSDLnhICu7vwH/+/yb8oB3BtBLhMsA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript">
+        const light1 = document.getElementById("light1");
+        const light2 = document.getElementById("light2");
+        // Make request
+        var result = axios.get('/getLights')
+            // Show response data
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err))
+        var objj = { a: 100, b: 50, c: undefined }
+        var obj = JSON.parse(JSON.stringify(result));
+        var resultt = JSON.parse(JSON.stringify(objj));
+        console.log(resultt);
+        var lighta = resultt.a;
+        var lightb = resultt.b;
+        document.getElementById('lighta').innerHTML = objj.a;
+        document.getElementById('lightb').innerHTML = objj.b;
+        
+        // const https = require('https')
+        // const options = {
+        //     hostname: 'localhost',
+        //     port: 5000,
+        //     path: '/getLights',
+        //     method: 'GET'
+        // }
+
+        // const req = https.request(options, res => {
+        // console.log(`statusCode: ${res.statusCode}`)
+        // res.on('data', d => {
+        //     process.stdout.write(d)
+        // })
+        // })
+        // req.on('error', error => {
+        // console.error(error)
+        // })
+
+        // req.end()
+    </script>
+</body>
+</html>
